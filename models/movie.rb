@@ -73,7 +73,7 @@ class Movie
 
   def remaining_budget()
     sql = "UPDATE movies
-    SET budget = budget - (SELECT fee
+    SET budget = budget - (SELECT SUM(fee)
     FROM castings
     INNER JOIN movies
     ON castings.movie_id = $1)"
